@@ -1,0 +1,41 @@
+@import '../../styles/main';
+
+.card {
+	width: 30%;
+	background-color: $white;
+	border: 1px solid rgba(0,0,0,.125);
+	border-radius: 10px;
+	margin-bottom: 30px;
+}
+
+.card__img {
+	display: block;
+	width: 100%;
+	height: 180px;
+	border-top-left-radius: 9px;
+	border-top-right-radius: 9px;
+	overflow: hidden;
+	img {
+		width: 100%;
+	}
+}
+
+.card__body {
+	flex: 1 1 auto;
+	padding: 1.25rem;
+}
+
+.card__title {
+	margin-bottom: 10px;
+}
+
+.card__btn {
+	display: inline-block;
+	text-align: center;
+	border: 1px solid transparent;
+	padding: 5px 20px;
+	line-height: 1.5;
+	border-radius: .25rem;
+	color: $white;
+	background-color: $blue;
+}

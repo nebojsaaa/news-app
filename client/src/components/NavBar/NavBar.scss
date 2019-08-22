@@ -1,0 +1,12 @@
+@import '../../styles/main';
+
+.nav {
+	padding: 20px 0;
+}
+
+.nav__link {
+	display: inline-block;
+	margin-right: 10px;
+	color: $black;
+	font-size: 20px;
+}
