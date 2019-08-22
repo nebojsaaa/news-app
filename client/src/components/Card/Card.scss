@@ -1,20 +1,33 @@
 @import '../../styles/main';
 
 .card {
+	display: flex;
+	flex-direction: column;
 	width: 30%;
 	background-color: $white;
 	border: 1px solid rgba(0,0,0,.125);
 	border-radius: 10px;
 	margin-bottom: 30px;
+	padding: 0 20px 20px;
+	@include max-width($tablet) {
+		width: 48%;
+	}
+
+	@include max-width($mobile) {
+		width: 100%;
+	}
 }
 
 .card__img {
 	display: block;
-	width: 100%;
+	position: relative;
+	width: calc(100% + 40px);
+	left: -20px;
 	height: 180px;
 	border-top-left-radius: 9px;
 	border-top-right-radius: 9px;
 	overflow: hidden;
+	margin-bottom: 20px;
 	img {
 		width: 100%;
 	}
@@ -26,7 +39,11 @@
 }
 
 .card__title {
-	margin-bottom: 10px;
+	margin-bottom: 20px;
+}
+
+.card__text {
+	margin-bottom: 20px;
 }
 
 .card__btn {
@@ -38,4 +55,8 @@
 	border-radius: .25rem;
 	color: $white;
 	background-color: $blue;
+	margin-top: auto;
+	align-self: flex-start;
 }
+
+
