@@ -6,7 +6,7 @@ import config from '../../config';
 
 // const Languages = () => config.countryCode.map(country => <button onClick={getCode(country.code)} key={country.code} data-code={country.code}>{country.name}</button>)
 
-const NavBar = ({ getCountry }) => {
+const NavBar = ({ getCountry, disableBtn }) => {
 	return (
 		<div className="nav">
 			<NavLink exact to='/' className="nav__link">Top News</NavLink>
@@ -14,7 +14,7 @@ const NavBar = ({ getCountry }) => {
 			<div className="language">
 				{config.countryCode.map(country => {
 					return (
-						<button onClick={() => getCountry(country.code)} key={country.code} data-code={country.code}>{country.name}</button>
+						<button disabled={disableBtn} onClick={() => getCountry(country.code)} key={country.code} data-code={country.code}>{country.name}</button>
 					)
 				})}
 			</div>

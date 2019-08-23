@@ -7,18 +7,25 @@ import config from './config';
 
 const App = () => {
 	const [ countryCode, setCountryCode ] = useState('');
+	const [ disableBtn, handleDisableBtn ] = useState(false);
 
 	return (
 		<div className="wrapper">
 			<BrowserRouter>
-				<NavBar getCountry={(code) => setCountryCode(code)} />
+				<NavBar 
+					getCountry={(code) => setCountryCode(code)}
+					disableBtn={disableBtn}
+				/>
 				<Switch>
 					<Route 
 						exact 
 						path={config.paths.topNews} 
-						render={() => { return <TopNews setCountry={countryCode} />}}
+						render={() => <TopNews setCountry={countryCode} disableBtn={handleDisableBtn} />}
 					/>
-					<Route exact path={config.paths.category} component={Category} />
+					<Route 
+						exact 
+						path={config.paths.category} 
+						component={Category} />
 				</Switch>
 			</BrowserRouter>
 		</div>

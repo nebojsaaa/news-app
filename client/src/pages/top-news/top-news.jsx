@@ -4,7 +4,7 @@ import config from '../../config';
 import Card from '../../components/Card/Card';
 import CardDetail from '../../components/CardDetail/CardDetail';
 
-const TopNews = ({ setCountry }) => {
+const TopNews = ({ setCountry, disableBtn }) => {
 
 	const [data, setData] = useState([]);
 	const [singleArticle, setSingleArticle] = useState([]);
@@ -81,10 +81,12 @@ const TopNews = ({ setCountry }) => {
 	const getSingleArticle = (card) => {
 		setSingleArticle(card);
 		setVisibility(false);
+		disableBtn(true);
 	}
 
 	const handleVisibility = () => {
 		setVisibility(true);
+		disableBtn(false);
 	}
 
 	return (
