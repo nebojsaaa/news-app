@@ -1,8 +1,7 @@
 export default {
 	paths: {
 		topNews: '/',
-		category: '/category',
-		singleNews: '/single-news'
+		category: '/category'
 	},
 	api: {
 		news: 'https://newsapi.org/v2/top-headlines',
@@ -20,5 +19,3 @@ export default {
 		}
 	]
 };
-
-// api + news + country + apiKey

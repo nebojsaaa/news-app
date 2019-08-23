@@ -9,7 +9,7 @@ const CardDetail = ({ singleArticle, handleVisibility }) => {
 			</div>
 			<h5 className="card__title">{singleArticle.title}</h5>
 			<p className="card__text">{singleArticle.content}</p>
-			<button onClick={handleVisibility} className="card__btn">Go back</button>
+			<button onClick={handleVisibility} className="card__btn">Back to list</button>
 		</div>
 	);
 }

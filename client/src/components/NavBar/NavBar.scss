@@ -1,7 +1,9 @@
 @import '../../styles/main';
 
 .nav {
+	display: flex;
 	padding: 20px 0;
+	justify-content: space-between;
 }
 
 .nav__link {
@@ -13,3 +15,23 @@
 		font-size: 14px;
 	}
 }
+
+.nav__lang-btn {
+	display: inline-block;
+	text-align: center;
+	border: 1px solid transparent;
+	padding: 5px 20px;
+	line-height: 1.5;
+	color: $white;
+	margin-left: 10px;
+	background-color: rgba($blue, 0.6);
+	&.nav__lang-btn--active {
+		background-color: $blue;
+	}
+
+	&.nav__lang-btn--disabled {
+		background-color: $grey;
+	}
+}
+
+

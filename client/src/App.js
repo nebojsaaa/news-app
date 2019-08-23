@@ -14,6 +14,7 @@ const App = () => {
 			<BrowserRouter>
 				<NavBar 
 					getCountry={(code) => setCountryCode(code)}
+					setActiveBtn = {countryCode}
 					disableBtn={disableBtn}
 				/>
 				<Switch>
