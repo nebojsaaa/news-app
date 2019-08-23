@@ -1,5 +1,14 @@
 @import '../../styles/main';
 
+.card-wrapper {
+	display: flex;
+	width: 100%;
+	max-width: 1120px;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin: 0 auto;
+}
+
 .card {
 	display: flex;
 	flex-direction: column;
@@ -15,6 +24,11 @@
 
 	@include max-width($mobile) {
 		width: 100%;
+	}
+
+	
+	&.card--hidden {
+		display: none;
 	}
 }
 
@@ -58,5 +72,6 @@
 	margin-top: auto;
 	align-self: flex-start;
 }
+
 
 

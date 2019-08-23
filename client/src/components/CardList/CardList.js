@@ -17,9 +17,7 @@ const CardList = () => {
 			}
 		};
 
-		console.log(`${config.api.news}?country=${config.countryCode.us}&apiKey=${config.apiKey}`);
-	
-		axios.get(`${config.api.news}?country=${config.countryCode.us}&apiKey=${config.apiKey}&pageSize=6`, requestOptions)
+		axios.get(`${config.api.news}?country=${config.countryCode[1].code}&apiKey=${config.apiKey}&pageSize=6`, requestOptions)
 			.then(res => {
 				setData(res.data);
 			})
@@ -29,8 +27,6 @@ const CardList = () => {
 	useEffect(() => {
 		fetchData();	
 	}, [])
-
-	console.log(data);
 
 	return (
 		<div className="card-wrapper">

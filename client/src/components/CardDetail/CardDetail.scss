@@ -1,0 +1,16 @@
+@import '../../styles/main';
+
+.card-full-width {
+	.card {
+		width: 100%;
+	}
+
+	.card__img {
+		width: 100%;
+		height: auto;
+		left: auto;
+		border-radius: 0;
+		overflow: visible;
+		margin-bottom: 20px;
+	}
+}
