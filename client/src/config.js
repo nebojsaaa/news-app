@@ -1,11 +1,12 @@
 export default {
 	paths: {
 		topNews: '/',
-		category: '/category'
+		categories: '/categories',
+		singleNews: '/categories/single-news'
 	},
 	api: {
 		news: 'https://newsapi.org/v2/top-headlines',
-		category: 'https://newsapi.org/v2/everything',
+		categories: 'https://newsapi.org/v2/everything',
 	},
 	categories: {
 		entertainment: 'entertainment',

@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import TopNews from './pages/top-news/top-news';
-import Category from './pages/category/category';
+import Categories from './pages/categories/categories';
 import NavBar from './components/NavBar/NavBar';
 import config from './config';
+import SingleNews from './pages/single-news/single-news';
 
 const App = () => {
 	const [ countryCode, setCountryCode ] = useState('');
 	const [ disableBtn, handleDisableBtn ] = useState(false);
+	const [ singleNews, setSingleNews ] = useState([]);
+	const [ country, getCountry ] = useState(''); // izmeni ovo
 
 	return (
 		<div className="wrapper">
@@ -29,8 +32,13 @@ const App = () => {
 					/>
 					<Route 
 						exact 
-						path={config.paths.category} 
-						render={() => <Category setCountry={countryCode} disableBtn={handleDisableBtn} />}	
+						path={config.paths.categories} 
+						render={() => <Categories setCountry={countryCode} disableBtn={handleDisableBtn} setSingleNews={setSingleNews} getCountry={getCountry} />}	
+					/>
+					<Route 
+						exact 
+						path={config.paths.singleNews} 
+						render={() => <SingleNews setCountry={countryCode} disableBtn={handleDisableBtn} singleNews={singleNews} country={country}/>}	
 					/>
 				</Switch>
 			</BrowserRouter>
