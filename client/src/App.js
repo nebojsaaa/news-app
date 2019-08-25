@@ -14,6 +14,10 @@ const App = () => {
 			<BrowserRouter>
 				<NavBar 
 					getCountry={(code) => setCountryCode(code)}
+					handleClick={() => {
+						setCountryCode('');
+						handleDisableBtn(false);
+					}}
 					setActiveBtn = {countryCode}
 					disableBtn={disableBtn}
 				/>
@@ -26,7 +30,8 @@ const App = () => {
 					<Route 
 						exact 
 						path={config.paths.category} 
-						component={Category} />
+						render={() => <Category setCountry={countryCode} disableBtn={handleDisableBtn} />}	
+					/>
 				</Switch>
 			</BrowserRouter>
 		</div>

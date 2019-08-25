@@ -4,15 +4,13 @@ import './NavBar.scss';
 import config from '../../config';
 
 
-// const Languages = () => config.countryCode.map(country => <button onClick={getCode(country.code)} key={country.code} data-code={country.code}>{country.name}</button>)
-
-const NavBar = ({ getCountry, disableBtn, setActiveBtn }) => {
+const NavBar = ({ getCountry, disableBtn, setActiveBtn, handleClick }) => {
 
 	return (
 		<div className="nav">
 			<div className="nav__content-left">
-				<NavLink exact to='/' className="nav__link">Top News</NavLink>
-				<NavLink exact to='/category' className="nav__link">Category</NavLink>
+				<NavLink exact to='/' onClick={handleClick} className="nav__link">Top News</NavLink>
+				<NavLink exact to='/category' onClick={handleClick} className="nav__link">Category</NavLink>
 			</div>
 			<div className="nav__content-right">
 				{config.countryCode.map(country => {

@@ -2,7 +2,6 @@ import React from 'react';
 import './Card.scss'
 
 const Card = ({ article, getSingleArticle }) => {
-
 	return (
 		<div className="card">
 			<div className="card__img">
