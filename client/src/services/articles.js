@@ -3,7 +3,8 @@ import axios from 'axios';
 
 export const articleService = {
     fetchData,
-    fetchDataCategories
+	fetchDataCategories,
+	fetchQueryData
 }
 
 function fetchData (countryCode, setData) {
@@ -32,9 +33,25 @@ function fetchDataCategories (countryCode, setData, categories) {
     };
 
 
-    axios.get(`${config.api.news}?country=${countryCode}&category=${categories}&apiKey=${config.apiKey}&pageSize=3`, requestOptions)
+    axios.get(`${config.api.news}?country=${countryCode}&category=${categories}&apiKey=${config.apiKey}&pageSize=5`, requestOptions)
         .then(res => {
             setData(res.data);
         })
         .catch(err => console.log(err));
-    }
+	}
+	
+	function fetchQueryData (setData, query) {
+		const requestOptions = {
+			method: 'GET',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+			}
+		};
+	
+		axios.get(`${config.api.news}?q=${query}&apiKey=${config.apiKey}&pageSize=6`, requestOptions)
+			.then(res => {
+				setData(res.data);
+			})
+			.catch(err => console.log(err));
+		}

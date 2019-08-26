@@ -2,7 +2,8 @@ export default {
 	paths: {
 		topNews: '/',
 		categories: '/categories',
-		singleNews: '/categories/single-news'
+		singleNews: '/categories/single-news',
+		search: '/search'
 	},
 	api: {
 		news: 'https://newsapi.org/v2/top-headlines',

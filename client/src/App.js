@@ -5,6 +5,7 @@ import Categories from './pages/categories/categories';
 import NavBar from './components/NavBar/NavBar';
 import config from './config';
 import SingleNews from './pages/single-news/single-news';
+import Search from './pages/search/search';
 
 const App = () => {
 	const [ countryCode, setCountryCode ] = useState('');
@@ -18,7 +19,8 @@ const App = () => {
 				<NavBar 
 					getCountry={(code) => setCountryCode(code)}
 					handleClick={() => {
-						setCountryCode('');
+						// izbrisi sve za ovo svuda gde se nalazi
+						// setCountryCode(''); 
 						handleDisableBtn(false);
 					}}
 					setActiveBtn = {countryCode}
@@ -38,7 +40,12 @@ const App = () => {
 					<Route 
 						exact 
 						path={config.paths.singleNews} 
-						render={() => <SingleNews setCountry={countryCode} disableBtn={handleDisableBtn} singleNews={singleNews} country={country}/>}	
+						render={() => <SingleNews setCountry={countryCode} disableBtn={handleDisableBtn} singleNews={singleNews} country={country} />}	
+					/>
+					<Route 
+						exact 
+						path={config.paths.search} 
+						render={() => <Search setCountry={countryCode} disableBtn={handleDisableBtn} />}	
 					/>
 				</Switch>
 			</BrowserRouter>

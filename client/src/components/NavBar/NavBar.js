@@ -11,6 +11,7 @@ const NavBar = ({ getCountry, disableBtn, setActiveBtn, handleClick }) => {
 			<div className="nav__content-left">
 				<NavLink exact to='/' onClick={handleClick} className="nav__link">Top News</NavLink>
 				<NavLink exact to='/categories' onClick={handleClick} className="nav__link">Categories</NavLink>
+				<NavLink exact to='/search' onClick={handleClick} className="nav__link">Search</NavLink>
 			</div>
 			<div className="nav__content-right">
 				{config.countryCode.map(country => {
