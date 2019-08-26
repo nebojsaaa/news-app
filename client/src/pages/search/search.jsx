@@ -23,7 +23,11 @@ const Search = ({ setCountry, disableBtn }) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		articleService.fetchQueryData(setData, query);
+		if (query === '') return false;
+		const convertQuery = encodeURI(query);
+		// set which country is active on load
+		const countryCode = setCountry ? setCountry : config.countryCode[0].code;
+		articleService.fetchQueryData(countryCode, setData, convertQuery);
 	}
 
 	const getSingleArticle = (card) => {
@@ -47,6 +51,8 @@ const Search = ({ setCountry, disableBtn }) => {
 		}
 	}
 
+	if (data.length < 1) return <span>No members at the moment</span>;
+
 	return (
 		<div>
 			<form onSubmit={handleSubmit}>
@@ -58,11 +64,12 @@ const Search = ({ setCountry, disableBtn }) => {
 					onChange={handleChange}
 				/>
 				<button type="submit">Search</button>
-			
 			</form>
 
 			{visibility && setTitle()}
 			<div className="card-wrapper">
+				{data.articles && data.articles.length < 1 && <span>Sorry, no articles at the moment</span>}
+
 				{visibility && data.articles && data.articles.map((article, index) => {
 					return (
 						<Card
@@ -72,7 +79,6 @@ const Search = ({ setCountry, disableBtn }) => {
 						/>
 					)
 				})}
-
 				{!visibility && <CardDetail singleArticle={singleArticle} handleVisibility={handleVisibility} />}
 			</div>
 		</div>
