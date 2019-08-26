@@ -2,17 +2,25 @@
 
 .nav {
 	display: flex;
-	padding: 20px 0;
+	padding: 20px 40px;
 	justify-content: space-between;
+	margin-bottom: 50px;
+	background-color: $white;
+	box-shadow: 0 4px 12px -6px rgba(224, 224, 224, 1);
 }
 
 .nav__link {
 	display: inline-block;
-	margin-right: 10px;
+	margin-right: 20px;
+	font-size: 18px;
+	font-weight: $light;
 	color: $black;
-	font-size: 20px;
+	transition: $dur $ease;
 	&.active {
-		color: $blue;
+		color: $orange;
+	}
+	&:hover:not(.active) {
+		color: rgba($black, .4);
 	}
 	@include max-width($mobile) {
 		font-size: 14px;
@@ -23,18 +31,31 @@
 	display: inline-block;
 	text-align: center;
 	border: 1px solid transparent;
-	padding: 5px 20px;
 	line-height: 1.5;
-	color: $white;
-	margin-left: 10px;
-	background-color: rgba($blue, 0.6);
+	margin-left: 20px;
+	background-color: transparent;
+	outline: none;
+	transition: $dur $ease;
+	
 	&.nav__lang-btn--active {
-		background-color: $blue;
+		color: $orange;
+	}
+	
+	&.nav__lang-btn--disabled {
+		color: $grey;
 	}
 
-	&.nav__lang-btn--disabled {
-		background-color: $grey;
+	&:hover:not(.nav__lang-btn--active) {
+		color: rgba($black, .4);
+		&.nav__lang-btn--disabled {
+			color: $grey;
+		}
 	}
+}
+
+.nav__content-left {
+	display: flex;
+	align-items: center;
 }
 
 

@@ -33,7 +33,7 @@ function fetchDataCategories (countryCode, setData, categories) {
     };
 
 
-    axios.get(`${config.api.news}?country=${countryCode}&category=${categories}&apiKey=${config.apiKey}&pageSize=5`, requestOptions)
+    axios.get(`${config.api.news}?country=${countryCode}&category=${categories}&apiKey=${config.apiKey}&pageSize=6`, requestOptions)
         .then(res => {
             setData(res.data);
         })

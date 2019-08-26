@@ -14,7 +14,7 @@ const App = () => {
 	const [ country, getCountry ] = useState(''); // izmeni ovo
 
 	return (
-		<div className="wrapper">
+		<div className="main">
 			<BrowserRouter>
 				<NavBar 
 					getCountry={(code) => setCountryCode(code)}
@@ -26,28 +26,30 @@ const App = () => {
 					setActiveBtn = {countryCode}
 					disableBtn={disableBtn}
 				/>
-				<Switch>
-					<Route 
-						exact 
-						path={config.paths.topNews} 
-						render={() => <TopNews setCountry={countryCode} disableBtn={handleDisableBtn} />}
-					/>
-					<Route 
-						exact 
-						path={config.paths.categories} 
-						render={() => <Categories setCountry={countryCode} disableBtn={handleDisableBtn} setSingleNews={setSingleNews} getCountry={getCountry} />}	
-					/>
-					<Route 
-						exact 
-						path={config.paths.singleNews} 
-						render={() => <SingleNews setCountry={countryCode} disableBtn={handleDisableBtn} singleNews={singleNews} country={country} />}	
-					/>
-					<Route 
-						exact 
-						path={config.paths.search} 
-						render={() => <Search setCountry={countryCode} disableBtn={handleDisableBtn} />}	
-					/>
-				</Switch>
+				<div className="wrapper">
+					<Switch>
+						<Route 
+							exact 
+							path={config.paths.topNews} 
+							render={() => <TopNews setCountry={countryCode} disableBtn={handleDisableBtn} />}
+						/>
+						<Route 
+							exact 
+							path={config.paths.categories} 
+							render={() => <Categories setCountry={countryCode} disableBtn={handleDisableBtn} setSingleNews={setSingleNews} getCountry={getCountry} />}	
+						/>
+						<Route 
+							exact 
+							path={config.paths.singleNews} 
+							render={() => <SingleNews setCountry={countryCode} disableBtn={handleDisableBtn} singleNews={singleNews} country={country} />}	
+						/>
+						<Route 
+							exact 
+							path={config.paths.search} 
+							render={() => <Search setCountry={countryCode} disableBtn={handleDisableBtn} />}	
+						/>
+					</Switch>
+				</div>
 			</BrowserRouter>
 		</div>
 	)

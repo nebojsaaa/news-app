@@ -73,15 +73,26 @@ const Category = ({ setCountry, disableBtn, setSingleNews, getCountry }) => {
 		setSingleNews(item);
 		getCountry(country);
 	}
+
+	const setTitle = () => {
+		// set which country is active on load
+		const countryCode = setCountry ? setCountry : config.countryCode[0].code;
+		if (countryCode === config.countryCode[0].code) {
+			return <h1 className="h1">Top 5 news by categories from Great Britain:</h1>
+		} else if (countryCode === config.countryCode[1].code) {
+			return <h1 className="h1">Top 5 news by categories from USA:</h1>
+		}
+	}
 	
 	return (
 		<div>
 			{visibility && 
 				<div className="category-wrapper">
+					{setTitle()}
 					{categories && categories.map((item, i) => {
 						return (
 							<div className="category__card-wrapper" key={i}>
-								<NavLink exact to="categories/single-news" onClick={() => handleClick(item)} className="h2">{item.name}</NavLink>
+								<NavLink exact to="categories/single-news" onClick={() => handleClick(item)} className="category__title">{item.name}</NavLink>
 								<div className="card-wrapper">
 									{item.data.articles && item.data.articles.map(article => {
 										return (

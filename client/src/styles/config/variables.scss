@@ -1,14 +1,27 @@
 //----------  variables
 //------------------------------------------------------------------------------
 
-$font-default: Futura, Trebuchet MS, Arial, sans-serif;
+// $font-default: Futura, Trebuchet MS, Arial, sans-serif;
+$font-default: 'Roboto';
+$font-heading: 'NotoSerif';
+
+// font-weights
+$normal: 400;
+$bold: 700;
+$light: 300;
 
 // Colors
 $white: #fff;
 $black: #000;
+$orange: #f48600;
 $grey: #666;
+$light-grey: #f5f6f8;
+$dark-grey: #333;
 $blue: #007bff;
 
+// transitions
+$dur: 300ms;
+$ease: ease;
 
 // Breakpoints
 $mobile: '768px';

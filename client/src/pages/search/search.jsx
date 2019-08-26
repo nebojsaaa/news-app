@@ -3,6 +3,7 @@ import { articleService } from '../../services/articles';
 import config from '../../config';
 import Card from '../../components/Card/Card';
 import CardDetail from '../../components/CardDetail/CardDetail';
+import './search.scss';
 
 const Search = ({ setCountry, disableBtn }) => {
 
@@ -55,15 +56,16 @@ const Search = ({ setCountry, disableBtn }) => {
 
 	return (
 		<div>
-			<form onSubmit={handleSubmit}>
-				Search top news from GB by term
+			<form onSubmit={handleSubmit} className="search-form">
+				<span className="search-form__title">{`Search top news from GB by term`}</span>
 				<input 
 					type="text"
 					name="query"
 					value={query}
 					onChange={handleChange}
+					className="search-form__input"
 				/>
-				<button type="submit">Search</button>
+				<button type="submit" className="search-form__btn">Search</button>
 			</form>
 
 			{visibility && setTitle()}

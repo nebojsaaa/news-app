@@ -15,6 +15,13 @@ body {
 	}
 }
 
+.main {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	background-color: $light-grey;
+}
+
 .wrapper {
 	margin: 0 auto;
 	max-width: 1120px;
@@ -24,9 +31,22 @@ body {
 }
 
 .h1 {
+	font-size: 28px;
+	font-weight: $bold;
+	color: $orange;
 	margin-bottom: 30px;
 }
 
 .h2 {
 	margin-bottom: 30px;
+}
+
+.cover-img {
+	min-width: 1000%;
+	min-height: 1000%;
+	max-width: none;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0.1);
 }

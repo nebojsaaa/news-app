@@ -1,0 +1,38 @@
+@import '../../styles/main';
+
+.search-form {
+	text-align: center;
+	width: 100%;
+	margin-bottom: 100px;
+}
+
+.search-form__title {
+	display: block;
+	font-size: 18px;
+	font-style: italic;
+	margin-bottom: 20px;
+}
+
+.search-form__input {
+	display: block;
+	width: 250px;
+	height: 40px;
+	border: 0;
+	margin: 0 auto 20px;
+	border-radius: 5px;
+	padding: 0 20px;
+	line-height: 50px;
+}
+
+.search-form__btn {
+	background-color: $grey;
+	padding: 10px 20px;
+	color: $white;
+	border-radius: 5px;
+	font-size: 14px;
+	border: 0;
+	transition: $dur $ease;
+	&:hover {
+		background-color: $orange;
+	}
+}
