@@ -11,18 +11,14 @@ const App = () => {
 	const [ countryCode, setCountryCode ] = useState('');
 	const [ disableBtn, handleDisableBtn ] = useState(false);
 	const [ singleNews, setSingleNews ] = useState([]);
-	const [ country, getCountry ] = useState(''); // izmeni ovo
+	const [ country, getCountry ] = useState('');
 
 	return (
 		<div className="main">
 			<BrowserRouter>
 				<NavBar 
 					getCountry={(code) => setCountryCode(code)}
-					handleClick={() => {
-						// izbrisi sve za ovo svuda gde se nalazi
-						// setCountryCode(''); 
-						handleDisableBtn(false);
-					}}
+					handleClick={() => handleDisableBtn(false)}
 					setActiveBtn = {countryCode}
 					disableBtn={disableBtn}
 				/>
