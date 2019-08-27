@@ -17,8 +17,8 @@ export default {
 		sports: 'sports',
 		technology: 'technology',
 	},
-	// apiKey: '93dd0b9e705f477d9352ecf39f64c254',
-	apiKey: '28ef0424ce5443a686874c08bcd59d0a',
+	apiKey: '93dd0b9e705f477d9352ecf39f64c254',
+	// apiKey: '28ef0424ce5443a686874c08bcd59d0a',
 	countryCode: [
 		{
 			name: 'GB',

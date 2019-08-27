@@ -4,6 +4,7 @@ import { articleService } from '../../services/articles';
 import config from '../../config';
 import Card from '../../components/Card/Card';
 import CardDetail from '../../components/CardDetail/CardDetail';
+import Slider from 'react-slick';
 import './categories.scss';
 
 const Category = ({ setCountry, disableBtn, setSingleNews, getCountry }) => {
@@ -60,6 +61,30 @@ const Category = ({ setCountry, disableBtn, setSingleNews, getCountry }) => {
 			data: dataTechnology
 		}
 	];
+
+	const sliderSettings = {
+		infinite: false,
+		arrows: true,
+		speed: 500,
+		slidesToShow: 3,
+		slidesToScroll: 1,
+		responsive: [
+			{
+				breakpoint: 1200,
+				settings: {
+					arrows: false
+				}
+			},
+			{
+			  breakpoint: 768,
+			  settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				infinite: false,
+			  }
+			}
+		]
+	}
 	
 	const getSingleArticle = (card) => {
 		setSingleArticle(card);
@@ -91,8 +116,9 @@ const Category = ({ setCountry, disableBtn, setSingleNews, getCountry }) => {
 	const handleToggle = (e, index) => {
 		const active = activeIndex === index ? -1 : index;
 		setActiveIndex(active);
+		console.log(activeIndex)
 		const card = e.target.parentNode.nextElementSibling;
-		// calculate and set height of hidden cards on click
+		//calculate and set height of hidden cards on click
 		card.style.maxHeight ? card.style.maxHeight = null : card.style.maxHeight = card.scrollHeight + 'px'; 
 	}
 
@@ -103,21 +129,23 @@ const Category = ({ setCountry, disableBtn, setSingleNews, getCountry }) => {
 					<h1 className="h1">{`Top 5 news by categories from ${setTitle()}:`}</h1>
 					{categories && categories.map((item, i) => {
 						return (
-							<div className="category__card-wrapper" key={i}>
+							<div className="slider-category__card-wrapper" key={i}>
 								<div className="category__card-title-wrap">
 									<NavLink exact to="categories/single-news" onClick={() => handleClick(item)} className="category__title">{item.name}</NavLink>
-									<span onClick={(e) => handleToggle(e, i)} className={`category__card-icon${activeIndex === i ? ' category__card-icon--active' : ''}`}></span>
+									<span onClick={(e) => handleToggle(e, i)} className="category__card-icon"></span>
 								</div>
-								<div className={`card__wrapper${activeIndex === i ? ' card__wrapper--active' : ''}`}>
-									{item.data.articles && item.data.articles.map(article => {
-										return (
-											<Card
-												getSingleArticle={getSingleArticle}
-												key={article.url}
-												article={article}
-											/>
-										)
-									})}
+								<div className={`slider-card__wrapper${activeIndex === i ? ' slider-card__wrapper--active' : ''}`}>
+									<Slider {...sliderSettings}>
+										{item.data.articles && item.data.articles.map(article => {
+											return (
+												<Card
+													getSingleArticle={getSingleArticle}
+													key={article.url}
+													article={article}
+												/>
+											)
+										})}
+									</Slider>
 								</div>
 							</div>
 							)
