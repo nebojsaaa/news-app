@@ -46,18 +46,25 @@ const Search = ({ setCountry, disableBtn }) => {
 		// set which country is active on load
 		const countryCode = setCountry ? setCountry : config.countryCode[0].code;
 		if (countryCode === config.countryCode[0].code) {
-			return <h1 className="h1">Top News from Great Britain</h1>
+			return 'Great Britain'
 		} else if (countryCode === config.countryCode[1].code) {
-			return <h1 className="h1">Top News from USA</h1>
+			return 'USA'
 		}
 	}
 
-	if (data.length < 1) return <span>No members at the moment</span>;
+	const setSearchCountry = () => {
+		const countryCode = setCountry ? setCountry : config.countryCode[0].code;
+		if (countryCode === config.countryCode[0].code) {
+			return 'Great Britain'
+		} else if (countryCode === config.countryCode[1].code) {
+			return 'USA'
+		}
+	}
 
 	return (
 		<div>
 			<form onSubmit={handleSubmit} className="search-form">
-				<span className="search-form__title">{`Search top news from GB by term`}</span>
+				<span className="search-form__title">{`Search top news from ${setSearchCountry()} by term`}</span>
 				<input 
 					type="text"
 					name="query"
@@ -68,8 +75,9 @@ const Search = ({ setCountry, disableBtn }) => {
 				<button type="submit" className="search-form__btn">Search</button>
 			</form>
 
-			{visibility && setTitle()}
-			<div className="card-wrapper">
+			{visibility}
+			<h1 className="h1">{`Top News from ${setTitle()}`}</h1>
+			<div className="card__wrapper">
 				{data.articles && data.articles.length < 1 && <span>Sorry, no articles at the moment</span>}
 
 				{visibility && data.articles && data.articles.map((article, index) => {

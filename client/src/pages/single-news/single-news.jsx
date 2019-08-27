@@ -32,7 +32,7 @@ const SingleNews = ({ singleNews, setCountry, country, disableBtn }) => {
 	return (
         <div>
             {visibility && setTitle(singleNews, country)}
-			<div className="card-wrapper">
+			<div className="card__wrapper">
 				{visibility && singleNews.data && singleNews.data.articles.map(article => {
 					return (
 						<Card

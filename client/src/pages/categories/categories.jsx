@@ -4,6 +4,7 @@ import { articleService } from '../../services/articles';
 import config from '../../config';
 import Card from '../../components/Card/Card';
 import CardDetail from '../../components/CardDetail/CardDetail';
+import './categories.scss';
 
 const Category = ({ setCountry, disableBtn, setSingleNews, getCountry }) => {
 
@@ -18,6 +19,8 @@ const Category = ({ setCountry, disableBtn, setSingleNews, getCountry }) => {
 	const [ visibility, setVisibility ] = useState(true);
 
 	const [ country, getCountryName ] = useState('');
+
+	const [ activeIndex, setActiveIndex ] = useState(-1);
 
 	useEffect(() => {
 		// set which country is active on load
@@ -67,6 +70,7 @@ const Category = ({ setCountry, disableBtn, setSingleNews, getCountry }) => {
 	const handleVisibility = () => {
 		setVisibility(true);
 		disableBtn(false);
+		setActiveIndex(false);
 	}
 
 	const handleClick = (item) => {
@@ -78,22 +82,33 @@ const Category = ({ setCountry, disableBtn, setSingleNews, getCountry }) => {
 		// set which country is active on load
 		const countryCode = setCountry ? setCountry : config.countryCode[0].code;
 		if (countryCode === config.countryCode[0].code) {
-			return <h1 className="h1">Top 5 news by categories from Great Britain:</h1>
+			return 'Great Britain'
 		} else if (countryCode === config.countryCode[1].code) {
-			return <h1 className="h1">Top 5 news by categories from USA:</h1>
+			return 'USA'
 		}
 	}
-	
+
+	const handleToggle = (e, index) => {
+		const active = activeIndex === index ? -1 : index;
+		setActiveIndex(active);
+		const card = e.target.parentNode.nextElementSibling;
+		// calculate and set height of hidden cards on click
+		card.style.maxHeight ? card.style.maxHeight = null : card.style.maxHeight = card.scrollHeight + 'px'; 
+	}
+
 	return (
 		<div>
 			{visibility && 
 				<div className="category-wrapper">
-					{setTitle()}
+					<h1 className="h1">{`Top 5 news by categories from ${setTitle()}:`}</h1>
 					{categories && categories.map((item, i) => {
 						return (
 							<div className="category__card-wrapper" key={i}>
-								<NavLink exact to="categories/single-news" onClick={() => handleClick(item)} className="category__title">{item.name}</NavLink>
-								<div className="card-wrapper">
+								<div className="category__card-title-wrap">
+									<NavLink exact to="categories/single-news" onClick={() => handleClick(item)} className="category__title">{item.name}</NavLink>
+									<span onClick={(e) => handleToggle(e, i)} className={`category__card-icon${activeIndex === i ? ' category__card-icon--active' : ''}`}></span>
+								</div>
+								<div className={`card__wrapper${activeIndex === i ? ' card__wrapper--active' : ''}`}>
 									{item.data.articles && item.data.articles.map(article => {
 										return (
 											<Card

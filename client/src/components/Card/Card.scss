@@ -1,6 +1,6 @@
 @import '../../styles/main';
 
-.card-wrapper {
+.card__wrapper {
 	display: flex;
 	width: 100%;
 	max-width: 1120px;
@@ -72,15 +72,6 @@
 	&:hover {
 		color: rgba($orange, .4);
 	}
-}
-
-.category__title {
-	display: block;
-	font-weight: $bold;
-	font-style: italic;
-	font-size: 20px;
-	color: $dark-grey;
-	margin-bottom: 10px;
 }
 
 

@@ -1,0 +1,38 @@
+@import '../../styles/main';
+
+.category__card-wrapper {
+	margin-bottom: 20px;
+	.card__wrapper {
+		max-height: 0;
+		padding-bottom: 0;
+		overflow: hidden;
+		transition: $dur $ease;
+	}
+}
+
+.category__card-icon {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 10px;
+	cursor: pointer;
+	transition: $dur $ease;
+	&::after {
+		content: url('../../assets/icons/chevron-down.svg');
+	}
+}
+
+.category__card-icon--active {
+	transform: rotate(180deg);
+}
+
+.category__title {
+	display: inline-block;
+	font-weight: $bold;
+	font-size: 20px;
+	color: $dark-grey;
+	margin-bottom: 10px;
+	transition: $dur $ease;
+	&:hover {
+		color: rgba($black, .4)
+	}
+}

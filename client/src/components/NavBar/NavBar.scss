@@ -1,12 +1,16 @@
 @import '../../styles/main';
 
 .nav {
+	position: relative;
 	display: flex;
 	padding: 20px 40px;
 	justify-content: space-between;
 	margin-bottom: 50px;
 	background-color: $white;
 	box-shadow: 0 4px 12px -6px rgba(224, 224, 224, 1);
+	@include max-width($mobile) {
+		padding: 20px;
+	}
 }
 
 .nav__link {
@@ -24,6 +28,9 @@
 	}
 	@include max-width($mobile) {
 		font-size: 14px;
+		&:last-child {
+			margin-right: 0;
+		}
 	}
 }
 
@@ -51,11 +58,41 @@
 			color: $grey;
 		}
 	}
+
+	@include max-width($mobile) {
+		margin-left: 10px;
+		color: $white;
+		&:first-child {
+			margin-left: 0;
+		}
+
+		&.nav__lang-btn--active {
+			color: $black;
+		}
+
+		&.nav__lang-btn--disabled {
+			color: $grey;
+		}
+	}
 }
 
 .nav__content-left {
 	display: flex;
 	align-items: center;
+}
+
+.nav__content-right {
+	@include max-width($mobile) {
+		position: absolute;
+		top: 0;
+		right: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		padding: 0 10px;
+		background-color: $orange;
+	}
 }
 
 

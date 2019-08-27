@@ -32,16 +32,17 @@ const TopNews = ({ setCountry, disableBtn }) => {
 		// set which country is active on load
 		const countryCode = setCountry ? setCountry : config.countryCode[0].code;
 		if (countryCode === config.countryCode[0].code) {
-			return <h1 className="h1">Top News from Great Britain</h1>
+			return 'Great Britain'
 		} else if (countryCode === config.countryCode[1].code) {
-			return <h1 className="h1">Top News from USA</h1>
+			return 'USA'
 		}
 	}
 
 	return (
 		<div>
-			{visibility && setTitle()}
-			<div className="card-wrapper">
+			{visibility}
+			<h1 className="h1">{`Top News from ${setTitle()}`}</h1>
+			<div className="card__wrapper">
 				{visibility && data.articles && data.articles.map(article => {
 					return (
 						<Card
